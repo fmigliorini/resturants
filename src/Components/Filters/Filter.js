@@ -41,14 +41,14 @@ const Filter = ({ list, setFilter }) => {
   }, []);
 
   const toggle = () => setIsOpen(!isOpen);
-
+  console.log(list[0]);
   const applyFilters = () => {
     let filterList = list;
 
     let keySearchs = [];
 
     if (byPlace) {
-      filterList = list.filter((item, key) => {
+      filterList = filterList.filter((item, key) => {
         if (item.Place.search(byPlace) !== -1) {
           keySearchs.push(key);
           return true;
@@ -59,8 +59,8 @@ const Filter = ({ list, setFilter }) => {
     }
 
     if (byTip) {
-      filterList = list.filter((item, key) => {
-        if (item.Place.search(byPlace) !== -1) {
+      filterList = filterList.filter((item, key) => {
+        if (item.Tips.search(byPlace) !== -1) {
           keySearchs.push(key);
           return true;
         }
@@ -70,7 +70,8 @@ const Filter = ({ list, setFilter }) => {
     }
 
     if (byLatitude) {
-      filterList = list.filter((key, item) => {
+      filterList = filterList.filter((item, key) => {
+        console.log(item);
         if (item.Latitude.toString().search(byLatitude) !== -1) {
           keySearchs.push(key);
           return true;
@@ -81,7 +82,7 @@ const Filter = ({ list, setFilter }) => {
     }
 
     if (byLongitude) {
-      filterList = list.filter((key, item) => {
+      filterList = filterList.filter((item, key) => {
         if (item.Latitude.toString().search(byLongitude) !== -1) {
           keySearchs.push(key);
           return true;
@@ -123,9 +124,6 @@ const Filter = ({ list, setFilter }) => {
 
   const resetFilters = () => {
     setFilter(list);
-    setByPlace(false);
-    setbyLatitude(false);
-    setByLongitude(false);
   };
 
   const buttonText = isOpen ? "Hide" : "Show";
