@@ -10,7 +10,7 @@ const Board = () => {
   const [resturants, setRestaurants] = useState(data);
   const [currentPage, setCurrentPage] = useState(1);
   const [restaurantPerPage] = useState(10);
-
+  
   const indexOfLastResturant = currentPage * restaurantPerPage;
   const indexOfFirstResturant = indexOfLastResturant - restaurantPerPage;
   const currentResturants = resturants.slice(indexOfFirstResturant, indexOfLastResturant);

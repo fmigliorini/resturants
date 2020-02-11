@@ -1,7 +1,10 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Row, Col, Collapse, Button, CardBody, Card, Form} from 'reactstrap';
 
 import FilterInput from './FilterInput';
+import FilterCheckbox from './FilterCheckbox';
+
+import { calculateDistance } from '../../helper/calculateProximity';
 
 const Filter = ({list, setFilter}) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -9,10 +12,39 @@ const Filter = ({list, setFilter}) => {
     const [byTip, setByTip] = useState(false);
     const [byLatitude, setbyLatitude] = useState(false);
     const [byLongitude, setByLongitude] = useState(false);
+    const [byProximity, setByProximity] = useState(false);
+    
+    console.log(byProximity);
+    const [position, setPosition] = useState({});
+    const [errorPosition, setErrorPosition] = useState(null);
+
+    const onChange = ({coords}) => {
+      setPosition({
+        latitude: coords.latitude,
+        longitude: coords.longitude,
+      });
+    };
+
+    const onError = (error) => {
+      setErrorPosition(true);
+    };
+
+    useEffect(() => {
+      const geo = navigator.geolocation;
+      if (!geo) {
+        setErrorPosition(true);
+        return;
+      }
+      const watcher = geo.watchPosition(onChange, onError);
+      setErrorPosition(false);
+      return () => geo.clearWatch(watcher);
+    }, []);
+
     const toggle = () => setIsOpen(!isOpen);
 
     const applyFilters = () => {
       let filterList = list;
+      console.log(list);
       console.log(filterList);
       if (byPlace) {
         filterList = filterList.filter(item => item.Place.search(byPlace) !== -1);
@@ -28,6 +60,12 @@ const Filter = ({list, setFilter}) => {
 
       if (byLongitude) {
         filterList = filterList.filter(item => item.Longitude.toString().search(byLongitude) !== -1);
+      }
+
+      if( position && byProximity ) {
+        filterList = filterList.filter(item => (
+          calculateDistance(item.Latitude, item.Longitude, position.latitude, position.longitude, "K") <= 1
+        ))
       }
       
       setFilter(filterList);
@@ -83,6 +121,13 @@ const Filter = ({list, setFilter}) => {
                         set={setByLongitude}
                       />
                     </Row>
+                    {!errorPosition && 
+                      <FilterCheckbox
+                        label="Proximity"
+                        name="proximity"
+                        set={setByProximity}
+                      />
+                    }
                     <Row form>
                       <Button
                         color="primary"
