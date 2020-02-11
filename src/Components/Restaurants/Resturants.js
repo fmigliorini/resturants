@@ -1,5 +1,5 @@
 import React from 'react';
-import { ListGroup, ListGroupItem } from 'reactstrap';
+import { ListGroup, ListGroupItem, Badge } from 'reactstrap';
 
 const Restaurants = ({resturants}) => (
   <div className="restaurant-list">
@@ -10,6 +10,9 @@ const Restaurants = ({resturants}) => (
           key={restaurant.Place}
         > 
           {restaurant.Place}
+          {restaurant.ranking && (
+            <Badge color="warning" pill>{restaurant.ranking}</Badge>
+          )}
         </ListGroupItem>
       ))}
     </ListGroup>
