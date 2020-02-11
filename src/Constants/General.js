@@ -1,1 +1,1 @@
-export const TITLE_APP = "Restaurants Search";
+export const TITLE_APP = "Restaurant Search";
