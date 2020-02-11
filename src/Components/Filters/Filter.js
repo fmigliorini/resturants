@@ -130,7 +130,7 @@ const Filter = ({ list, setFilter }) => {
 
   const buttonText = isOpen ? "Hide" : "Show";
   return (
-    <div class="filter-container">
+    <div className="filter-container">
       <Row>
         <Col>
           <h3>
