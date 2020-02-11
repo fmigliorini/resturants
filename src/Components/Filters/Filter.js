@@ -15,7 +15,6 @@ const Filter = ({ list, setFilter }) => {
   const [byLongitude, setByLongitude] = useState(false);
   const [byProximity, setByProximity] = useState(false);
 
-  console.log(byProximity);
   const [position, setPosition] = useState({});
   const [errorPosition, setErrorPosition] = useState(null);
 
@@ -118,12 +117,11 @@ const Filter = ({ list, setFilter }) => {
         list[key].ranking = 1;
       }
     });
-    
+
     setFilter(filterList);
   };
 
   const resetFilters = () => {
-    console.log(list);
     setFilter(list);
     setByPlace(false);
     setbyLatitude(false);

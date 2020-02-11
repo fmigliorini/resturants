@@ -7,7 +7,7 @@ const PaginationFooter = ({totalPerPage, total, paginate}) => {
   for (let i=1; i <= Math.ceil(total / totalPerPage); i++) {
     pageNumbers.push(i);
   }
-  console.log(totalPerPage, total, Math.ceil(total / totalPerPage));
+
   return (
     <Pagination aria-label="Page navigation example">
       {pageNumbers.map(pageNumber => (
