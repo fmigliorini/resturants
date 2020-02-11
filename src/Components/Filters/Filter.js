@@ -41,7 +41,6 @@ const Filter = ({ list, setFilter }) => {
   }, []);
 
   const toggle = () => setIsOpen(!isOpen);
-  console.log(list[0]);
   const applyFilters = () => {
     let filterList = list;
 
@@ -71,7 +70,6 @@ const Filter = ({ list, setFilter }) => {
 
     if (byLatitude) {
       filterList = filterList.filter((item, key) => {
-        console.log(item);
         if (item.Latitude.toString().search(byLatitude) !== -1) {
           keySearchs.push(key);
           return true;
@@ -197,7 +195,7 @@ const Filter = ({ list, setFilter }) => {
                         resetFilters();
                       }}
                     >
-                      Reset Filters
+                      Reset list
                     </Button>
                   </Row>
                 </Form>
