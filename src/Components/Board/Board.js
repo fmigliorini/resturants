@@ -15,9 +15,14 @@ const Board = () => {
   const indexOfFirstResturant = indexOfLastResturant - restaurantPerPage;
   const currentResturants = resturants.slice(indexOfFirstResturant, indexOfLastResturant);
 
+  const setRestaurantList = list => {
+    setCurrentPage(1);
+    setRestaurants(list);
+  }
+
   return (
     <Container>
-      <Filters list={data} setFilter={setRestaurants}/>
+      <Filters list={data} setFilter={setRestaurantList}/>
       <Resturants resturants={currentResturants} />
       <PaginationFooter 
         totalPerPage={restaurantPerPage}
