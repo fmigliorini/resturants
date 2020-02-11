@@ -2,3 +2,13 @@
   display: flex;
   justify-content: center;
 }
+
+.filter-container {
+  display:flex;
+  flex-flow: column;
+  margin-bottom: 15px;
+}
+
+.restaurant-list {
+  margin-bottom:15px;
+}
