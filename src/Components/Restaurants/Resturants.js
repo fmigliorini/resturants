@@ -2,6 +2,7 @@ import React from 'react';
 import { ListGroup, ListGroupItem } from 'reactstrap';
 
 const Restaurants = ({resturants}) => (
+  <div className="restaurant-list">
     <ListGroup>
       {resturants.map(restaurant => (
         <ListGroupItem 
@@ -12,8 +13,7 @@ const Restaurants = ({resturants}) => (
         </ListGroupItem>
       ))}
     </ListGroup>
-
-
+  </div>
 );
 
 export default Restaurants;

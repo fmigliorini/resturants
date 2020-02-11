@@ -4,11 +4,12 @@ import { Container } from 'reactstrap';
 import data from '../../data/restaurants';
 import Resturants from '../Restaurants';
 import PaginationFooter from '../PaginationFooter';
+import Filters from '../Filters';
 
 const Board = () => {
-  const [resturants] = useState(data);
+  const [resturants, setRestaurants] = useState(data);
   const [currentPage, setCurrentPage] = useState(1);
-  const [restaurantPerPage, setRestaurantsPerPage] = useState(10);
+  const [restaurantPerPage] = useState(10);
 
   const indexOfLastResturant = currentPage * restaurantPerPage;
   const indexOfFirstResturant = indexOfLastResturant - restaurantPerPage;
@@ -16,6 +17,7 @@ const Board = () => {
 
   return (
     <Container>
+      <Filters list={data} setFilter={setRestaurants}/>
       <Resturants resturants={currentResturants} />
       <PaginationFooter 
         totalPerPage={restaurantPerPage}
