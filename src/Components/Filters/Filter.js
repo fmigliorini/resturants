@@ -59,7 +59,7 @@ const Filter = ({ list, setFilter }) => {
 
     if (byTip) {
       filterList = filterList.filter((item, key) => {
-        if (item.Tips.search(byPlace) !== -1) {
+        if (item.Tips.search(byTip) !== -1) {
           keySearchs.push(key);
           return true;
         }
