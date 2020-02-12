@@ -110,10 +110,12 @@ const Filter = ({ list, setFilter, defaultList }) => {
     }
 
     keySearchs.forEach(key => {
-      if (list[key] && list[key].ranking) {
-        list[key].ranking++;
-      } else {
-        list[key].ranking = 1;
+      if (defaultList[key]) {
+        if (defaultList[key].ranking) {
+          defaultList[key].ranking++;
+        } else {
+          defaultList[key].ranking = 1;
+        }
       }
     });
 
