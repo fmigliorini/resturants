@@ -49,7 +49,7 @@ const Filter = ({ list, setFilter, defaultList }) => {
     if (byPlace) {
       filterList = filterList.filter((item, key) => {
         if (item.Place.search(byPlace) !== -1) {
-          keySearchs.push(key);
+          if (keySearchs.indexOf(key) === -1) keySearchs.push(key);
           return true;
         }
         keySearchs = arrayRemove(keySearchs, key);
@@ -60,7 +60,7 @@ const Filter = ({ list, setFilter, defaultList }) => {
     if (byTip) {
       filterList = filterList.filter((item, key) => {
         if (item.Tips.search(byTip) !== -1) {
-          keySearchs.push(key);
+          if (!keySearchs.indexOf(key) === -1) keySearchs.push(key);
           return true;
         }
         keySearchs = arrayRemove(keySearchs, key);
@@ -71,7 +71,7 @@ const Filter = ({ list, setFilter, defaultList }) => {
     if (byLatitude) {
       filterList = filterList.filter((item, key) => {
         if (item.Latitude.toString().search(byLatitude) !== -1) {
-          keySearchs.push(key);
+          if (!keySearchs.indexOf(key) === -1) keySearchs.push(key);
           return true;
         }
         keySearchs = arrayRemove(keySearchs, key);
@@ -82,7 +82,7 @@ const Filter = ({ list, setFilter, defaultList }) => {
     if (byLongitude) {
       filterList = filterList.filter((item, key) => {
         if (item.Latitude.toString().search(byLongitude) !== -1) {
-          keySearchs.push(key);
+          if (!keySearchs.indexOf(key) === -1) keySearchs.push(key);
           return true;
         }
         keySearchs = arrayRemove(keySearchs, key);
@@ -101,7 +101,7 @@ const Filter = ({ list, setFilter, defaultList }) => {
             "K"
           ) <= 1
         ) {
-          keySearchs.push(key);
+          if (!keySearchs.indexOf(key) === -1) keySearchs.push(key);
           return true;
         }
         keySearchs = arrayRemove(keySearchs, key);
