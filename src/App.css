@@ -1,6 +1,7 @@
 .app-title {
   display: flex;
   justify-content: center;
+  margin-bottom: 15px;
 }
 
 .filter-container {
@@ -11,4 +12,9 @@
 
 .restaurant-list {
   margin-bottom:15px;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
 }

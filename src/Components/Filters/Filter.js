@@ -7,7 +7,7 @@ import FilterCheckbox from "./FilterCheckbox";
 import { calculateDistance } from "../../helper/calculateProximity";
 import { arrayRemove } from "../../helper/generic";
 
-const Filter = ({ list, setFilter }) => {
+const Filter = ({ list, setFilter, defaultList }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [byPlace, setByPlace] = useState(false);
   const [byTip, setByTip] = useState(false);
@@ -121,7 +121,7 @@ const Filter = ({ list, setFilter }) => {
   };
 
   const resetFilters = () => {
-    setFilter(list);
+    setFilter(defaultList);
   };
 
   const buttonText = isOpen ? "Hide" : "Show";
