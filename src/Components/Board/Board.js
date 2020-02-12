@@ -58,7 +58,7 @@ const Board = () => {
 
   return (
     <Container>
-      <Filters list={resturants} setFilter={setRestaurants} defaultList={defaultList}/>
+      <Filters list={resturants} setFilter={setRestaurantList} defaultList={defaultList}/>
       <Resturants resturants={currentResturants} />
       <PaginationFooter
         totalPerPage={restaurantPerPage}

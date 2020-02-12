@@ -42,7 +42,7 @@ const Filter = ({ list, setFilter, defaultList }) => {
 
   const toggle = () => setIsOpen(!isOpen);
   const applyFilters = () => {
-    let filterList = list;
+    let filterList = defaultList;
 
     let keySearchs = [];
 
@@ -104,7 +104,7 @@ const Filter = ({ list, setFilter, defaultList }) => {
           keySearchs.push(key);
           return true;
         }
-        keySearchs.remove(key);
+        keySearchs = arrayRemove(keySearchs, key);
         return false;
       });
     }
